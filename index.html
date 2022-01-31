@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+  <div class="loader-wrapper">
+    <div class="loader-inner">
+      <div class="loader">
+        <div class="goo"></div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="clock" id="clock">
+      <div id="days">
+        <div>sun</div>
+        <div>mon</div>
+        <div>tue</div>
+        <div>wed</div>
+        <div>thu</div>
+        <div>fri</div>
+        <div>sat</div>
+      </div>
+
+      <div id="time">
+        <div>
+          <span id="hours">00</span>
+          <span>Hours</span>
+        </div>
+        <div><span class="dots">:</span></div>
+        <div>
+          <span id="minutes">00</span>
+          <span>Minutes</span>
+        </div>
+        <div><span class="dots">:</span></div>
+        <div>
+          <span id="seconds">00</span>
+          <span>Seconds</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-links">
+      <a href="https://www.google.com/">Google</a>
+      <a href="https://www.youtube.com/">YouTube</a>
+      <a href="https://filmix.ac/">Filmix</a>
+      <a href="https://trello.com/">Trello</a>
+      <a href="https://cp.booma.co.il:2083">cPanel</a>
+      <a href="https://git.booma.co.il/">GitLab</a>
+      <a href="https://github.com/">GitHub</a>
+      <a href="https://codepen.io/">CodePen</a>
+      <a href="https://web.whatsapp.com/">WhatsApp</a>
+      <a href="https://www.producerbox.com/">Producerbox</a>
+      <a href="https://next.privat24.ua">Privat24</a>
+      <a href="https://www.bestchange.ru/">BestChange</a>
+      <a href="https://www.rutracker.org/">Rutracker</a>
+    </div>
+
+    <div class="prices">
+      <div class="prices__block">
+        <div class="prices__item" data-coin="bitcoin">
+          <div class="img-wrap"><img src="./assets/img/svg/white/btc.svg" alt="coin icon"></div>
+          <h4>BTC</h4>
+          <span></span>
+        </div>
+        <div class="prices__item" data-coin="litecoin">
+          <div class="img-wrap"><img src="./assets/img/svg/white/ltc.svg" alt="coin icon"></div>
+          <h4>LTC</h4>
+          <span></span>
+        </div>
+        <div class="prices__item" data-coin="ethereum">
+          <div class="img-wrap"><img src="./assets/img/svg/white/eth.svg" alt="coin icon"></div>
+          <h4>ETH</h4>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="prices__block">
+        <div class="prices__item" data-currency="USD">
+          <div class="img-wrap">&#36;</div>
+          <h4>USD</h4>
+          <span></span>
+        </div>
+        <div class="prices__item" data-currency="EUR">
+          <div class="img-wrap">&euro;</div>
+          <h4>EUR</h4>
+          <span></span>
+        </div>
+        <div class="prices__item" data-currency="RUB">
+          <div class="img-wrap">&#8381;</div>
+          <h4>RUB</h4>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/js/index.js"></script>
+</body>
+
+</html>

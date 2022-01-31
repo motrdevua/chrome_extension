@@ -1,0 +1,553 @@
+/* Указываем box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class], ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body, h1, h2, h3, h4, p, ul[class], ol[class], li, figure, figcaption, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class], ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article>*+* {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: .01ms !important;
+    -webkit-animation-duration: .01ms !important;
+            animation-duration: .01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+  }
+}
+
+
+@font-face {
+  font-weight: 900;
+  font-style: normal;
+  font-family: "Orbitron";
+  src: url("../fonts/Orbitron-Black.ttf");
+}
+
+@font-face {
+  font-weight: 800;
+  font-style: normal;
+  font-family: "Orbitron";
+  src: url("../fonts/Orbitron-ExtraBold.ttf");
+}
+
+@font-face {
+  font-weight: 700;
+  font-style: normal;
+  font-family: "Orbitron";
+  src: url("../fonts/Orbitron-Bold.ttf");
+}
+
+@font-face {
+  font-weight: 600;
+  font-style: normal;
+  font-family: "Orbitron";
+  src: url("../fonts/Orbitron-SemiBold.ttf");
+}
+
+@font-face {
+  font-weight: 500;
+  font-style: normal;
+  font-family: "Orbitron";
+  src: url("../fonts/Orbitron-Medium.ttf");
+}
+
+@font-face {
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Orbitron";
+  src: url("../fonts/Orbitron-Regular.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Orbitron",
+  "SF Pro Text",
+  "SF Pro Icons",
+  "Helvetica Neue",
+  "Helvetica",
+  "Arial",
+  sans-serif;
+
+   -khtml-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+body {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #000000;
+}
+
+.wrapper {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  height: 100vh;
+  background: url("../img/bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.img-wrap {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+.img-wrap img, .img-wrap svg, .img-wrap picture, .img-wrap video {
+  max-width: 100%;
+  width: 100%;
+  transition: all .2s linear;
+
+  object-fit: cover;
+}
+
+/*! Preloader */
+
+.loader-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 1);
+  opacity: 1;
+  transition: all .4s linear;
+}
+
+.loader-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: all .4s linear;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+          transform: translate(-50%, -50%) scale(1);
+}
+
+.loader {
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 200px;
+  height: 200px;
+  border: 25px solid #000000;
+  border-radius: 1000px;
+  -webkit-filter: url("#goo");
+          filter: url("#goo");
+}
+
+.goo {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 1000px;
+  background-color: #a6fd29;
+  -webkit-filter: url("#goo");
+          filter: url("#goo");
+  -webkit-animation: loading 2s infinite ease-in-out, color 2s infinite ease-in-out;
+          animation: loading 2s infinite ease-in-out, color 2s infinite ease-in-out;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    top: -68px;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+
+  100% {
+    top: 165px;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+
+@keyframes loading {
+  0% {
+    top: -68px;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+
+  100% {
+    top: 165px;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+
+@-webkit-keyframes color {
+  0% {
+    background-color: #af3dff;
+    box-shadow: 0 0 30px #af3dff;
+  }
+
+  25% {
+    background-color: #1da2fc;
+    box-shadow: 0 0 30px #1da2fc;
+  }
+
+  50% {
+    background-color: #ff006a;
+    box-shadow: 0 0 30px #ff006a;
+  }
+
+  65% {
+    background-color: #a6fd29;
+    box-shadow: 0 0 30px #a6fd29;
+  }
+
+  100% {
+    background-color: #1da2fc;
+    box-shadow: 0 0 30px #1da2fc;
+  }
+}
+
+@keyframes color {
+  0% {
+    background-color: #af3dff;
+    box-shadow: 0 0 30px #af3dff;
+  }
+
+  25% {
+    background-color: #1da2fc;
+    box-shadow: 0 0 30px #1da2fc;
+  }
+
+  50% {
+    background-color: #ff006a;
+    box-shadow: 0 0 30px #ff006a;
+  }
+
+  65% {
+    background-color: #a6fd29;
+    box-shadow: 0 0 30px #a6fd29;
+  }
+
+  100% {
+    background-color: #1da2fc;
+    box-shadow: 0 0 30px #1da2fc;
+  }
+}
+
+/*! Preloader end */
+
+/*! Clock */
+.clock {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  width: unset;
+  opacity: 1;
+  transition: all .4s linear;
+  -webkit-transform: translateY(-300%) scale(.95);
+          transform: translateY(-300%) scale(.95);
+}
+
+#clock #time {
+  display: flex;
+}
+
+#clock #time div {
+  position: relative;
+  margin: 0 .5em;
+  height: 75%;
+
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+}
+
+#clock #time div span {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  height: 75%;
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 5em;
+}
+
+#clock #time div .dots {
+  min-width: unset;
+}
+
+/* #clock #time div:nth-child(2n) {
+  margin: 0;
+}
+#clock #time div:nth-child(2n) span {
+  min-width: unset;
+} */
+
+#clock #time div span:nth-child(2) {
+  z-index: 9;
+  height: 16px;
+  border-radius: 0;
+  box-shadow: none;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-weight: 500;
+  font-size: .7em;
+}
+
+#days {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+#days div {
+  padding: 5px;
+  font-size: 13px;
+
+  -webkit-box-reflect: below -19px linear-gradient(transparent, #0003);
+}
+
+/*! Clock end*/
+
+/*! Coins */
+.prices {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  padding: .25em;
+  border-radius: 0 0 0 4px;
+  background: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .2);
+  color: rgba(29, 162, 252, 1);
+  letter-spacing: 1px;
+  font-size: 10px;
+  opacity: 0;
+  transition: all .4s linear;
+  -webkit-transform: translateX(300%) scale(.95);
+          transform: translateX(300%) scale(.95);
+}
+
+.prices__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.prices .prices__item {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: flex-start;
+  margin: .4em;
+  padding: 0 3px 0 0;
+  height: 28px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .2);
+}
+
+.prices span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 5px;
+  min-width: 75px;
+  border-radius: 0 4px 4px 0;
+  background-color: #ff006a;
+  color: #ffffff;
+  text-align: center;
+}
+
+.prices h4 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 5px 3px 30px;
+  min-width: 70px;
+  border-radius: 15px 0 0 15px;
+  background: #0389e2;
+  color: #ffffff;
+  text-align: center;
+}
+
+.prices h4::after {
+  position: absolute;
+  top: 50%;
+  height: 99%;
+  background: #ffffff;
+  content: "";
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+
+.prices h4::after {
+  right: 0;
+  width: 2px;
+}
+
+.prices .img-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  justify-content: center;
+  margin: 0;
+  padding: 2px;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: rgba(29, 162, 252, 1);
+  color: #ffffff;
+  font-size: 16px;
+}
+
+/*! Coins end */
+
+/*! Quick-links */
+.quick-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2em;
+  max-width: calc(100vw - 4em);
+  width: 50%;
+  opacity: 0;
+  transition: all .4s linear;
+  -webkit-transform: translateY(300%) scale(.95);
+          transform: translateY(300%) scale(.95);
+
+  -webkit-box-reflect: below -19px linear-gradient(transparent, #0003);
+}
+
+.quick-links a {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  padding: 5px 15px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, .5);
+  color: rgba(29, 162, 252, 1);
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: clamp(12px, 2vw, 16px);
+  transition: all .2s linear;
+}
+
+.quick-links a:hover {
+  box-shadow: 0 0 15px 5px rgba(29, 162, 252, .5);
+  color: #ffffff;
+  transition: all .2s linear;
+}
+
+.quick-links a::before, .quick-links a::after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #1da2fc;
+  content: "";
+  transition: all .2s linear;
+}
+
+.quick-links a::before {
+  top: 0;
+  left: 0;
+}
+
+.quick-links a::after {
+  right: 0;
+  bottom: 0;
+}
+
+.quick-links a:hover::before, .quick-links a:hover::after {
+  width: calc(150% - 1em);
+  background: #ffffff;
+  transition: all .2s linear;
+}
+
+/*! Quick-links end */
